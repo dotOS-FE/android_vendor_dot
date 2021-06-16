@@ -89,7 +89,8 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 PRODUCT_PACKAGES += \
     Customizations \
     StitchImage \
-    Music
+    Music \
+    Leaflet
 
 ifeq ($(DOTFE_OFFICIAL), true)
 PRODUCT_PACKAGES += \
