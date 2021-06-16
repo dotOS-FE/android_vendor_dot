@@ -1,5 +1,5 @@
 android_app {
-    name: "DotWallpapers",
+    name: "DotFEWallpapers",
     platform_apis: true,
     resource_dirs: ["res"],
     certificate: "platform",

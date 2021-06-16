@@ -21,10 +21,10 @@ PRODUCT_PACKAGES += \
     BigShouldersText-Bold.ttf \
     BigShouldersText-ExtraBold.ttf
 
-LOCAL_PATH := vendor/dot/fonts
+LOCAL_PATH := vendor/dotfe/fonts
 PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/ttf,$(TARGET_COPY_OUT_PRODUCT)/fonts)
 PRODUCT_COPY_FILES += \
-    vendor/dot/fonts/fonts_customization.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/fonts_customization.xml
+    vendor/dotfe/fonts/fonts_customization.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/fonts_customization.xml
 
 # Customization overlays
 PRODUCT_PACKAGES += \

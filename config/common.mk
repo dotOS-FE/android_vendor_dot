@@ -1,4 +1,5 @@
 # Copyright (C) 2020 Project dotOS
+# Copyright (C) 2021 Project dotOS-FE (Fan Edition)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,7 +16,7 @@
 # Allow vendor/extra to override any property by setting it first
 $(call inherit-product-if-exists, vendor/extra/product.mk)
 
-PRODUCT_BRAND ?= dotOS
+PRODUCT_BRAND ?= dotOS-FE
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
@@ -37,15 +38,15 @@ endif
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
-    vendor/dot/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
-    vendor/dot/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/dot/prebuilt/common/bin/50-dot.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-dot.sh
+    vendor/dotfe/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
+    vendor/dotfe/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
+    vendor/dotfe/prebuilt/common/bin/50-dotfe.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-dotfe.sh
 
 ifneq ($(strip $(AB_OTA_PARTITIONS) $(AB_OTA_POSTINSTALL_CONFIG)),)
 PRODUCT_COPY_FILES += \
-    vendor/dot/prebuilt/common/bin/backuptool_ab.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.sh \
-    vendor/dot/prebuilt/common/bin/backuptool_ab.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.functions \
-    vendor/dot/prebuilt/common/bin/backuptool_postinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_postinstall.sh
+    vendor/dotfe/prebuilt/common/bin/backuptool_ab.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.sh \
+    vendor/dotfe/prebuilt/common/bin/backuptool_ab.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.functions \
+    vendor/dotfe/prebuilt/common/bin/backuptool_postinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_postinstall.sh
 ifneq ($(TARGET_BUILD_VARIANT),user)
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.ota.allow_downgrade=true
@@ -54,16 +55,16 @@ endif
 
 # Backup Services whitelist
 PRODUCT_COPY_FILES += \
-    vendor/dot/config/permissions/backup.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/backup.xml \
-    vendor/dot/config/permissions/privapp-permissions-lineagehw.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-lineagehw.xml
+    vendor/dotfe/config/permissions/backup.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/backup.xml \
+    vendor/dotfe/config/permissions/privapp-permissions-lineagehw.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-lineagehw.xml
 
-# Copy all Dot-specific init rc files
-$(foreach f,$(wildcard vendor/dot/prebuilt/common/etc/init/*.rc),\
+# Copy all DotOS-FE-specific init rc files
+$(foreach f,$(wildcard vendor/dotfe/prebuilt/common/etc/init/*.rc),\
 	$(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_SYSTEM)/etc/init/$(notdir $f)))
 
 # Enable Android Beam on all targets
 PRODUCT_COPY_FILES += \
-    vendor/dot/config/permissions/android.software.nfc.beam.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.software.nfc.beam.xml
+    vendor/dotfe/config/permissions/android.software.nfc.beam.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.software.nfc.beam.xml
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
@@ -96,23 +97,23 @@ PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
 # Device Overlays
-PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/dot/overlay
-DEVICE_PACKAGE_OVERLAYS += vendor/dot/overlay/common
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/dotfe/overlay
+DEVICE_PACKAGE_OVERLAYS += vendor/dotfe/overlay/common
 
 #Telephony
-$(call inherit-product, vendor/dot/config/telephony.mk)
+$(call inherit-product, vendor/dotfe/config/telephony.mk)
 
 # Packages
-include vendor/dot/config/packages.mk
+include vendor/dotfe/config/packages.mk
 
 #versioning
-include vendor/dot/config/version.mk
+include vendor/dotfe/config/version.mk
 
 # Bootanimation
-include vendor/dot/config/bootanimation.mk
+include vendor/dotfe/config/bootanimation.mk
 
 # Fonts
-include vendor/dot/config/fonts.mk
+include vendor/dotfe/config/fonts.mk
 
 ifeq ($(EXTRA_FOD_ANIMATIONS),true)
 PRODUCT_PACKAGES += \
@@ -184,9 +185,6 @@ ifeq ($(WITH_GAPPS), true)
     $(call inherit-product, vendor/gms/products/gms.mk)
 endif
 
-PRODUCT_EXTRA_RECOVERY_KEYS += \
-  vendor/dot/build/security/releasekey
-
 # Face Unlock
 TARGET_FACE_UNLOCK_SUPPORTED ?= true
 ifeq ($(TARGET_FACE_UNLOCK_SUPPORTED),true)
@@ -214,5 +212,5 @@ PRODUCT_PRODUCT_PROPERTIES += \
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.boot.vendor.overlay.theme=com.android.internal.systemui.navbar.gestural
 
-# Dot_props
-$(call inherit-product, vendor/dot/config/dot_props.mk)
+# DotFE_props
+$(call inherit-product, vendor/dotfe/config/dotfe_props.mk)

@@ -1,4 +1,5 @@
 # Copyright (C) 2018-20 Project dotOS
+# Copyright (C) 2021 Project dotOS-FE (Fan Edition)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,50 +13,50 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#dotOS Versioning :
-DOT_MOD_VERSION = v5.1.1
+#dotOS Fan Edition Versioning :
+DOTFE_MOD_VERSION = v1.0
 
-ifndef DOT_BUILD_TYPE
-    DOT_BUILD_TYPE := UNOFFICIAL
+ifndef DOTFE_BUILD_TYPE
+    DOTFE_BUILD_TYPE := UNOFFICIAL
 endif
 
 CURRENT_DEVICE=$(shell echo "$(TARGET_PRODUCT)" | cut -d'_' -f 2,3)
 
-DOT_BUILD_DATE_UTC := $(shell date -u '+%Y%m%d-%H%M')
+DOTFE_BUILD_DATE_UTC := $(shell date -u '+%Y%m%d-%H%M')
 
-ifeq ($(DOT_OFFICIAL), true)
-   LIST = $(shell cat vendor/dot/dot.devices)
+ifeq ($(DOTFE_OFFICIAL), true)
+   LIST = $(shell cat vendor/dotfe/dotfe.devices)
    FOUND_DEVICE =  $(filter $(CURRENT_DEVICE), $(LIST))
     ifeq ($(FOUND_DEVICE),$(CURRENT_DEVICE))
       IS_OFFICIAL=true
-      DOT_BUILD_TYPE := OFFICIAL
+      DOTFE_BUILD_TYPE := OFFICIAL
       ifeq ($(WITH_GAPPS), true)
-	DOT_BUILD_TYPE := GAPPS
+	DOTFE_BUILD_TYPE := GAPPS
       endif
     endif
     ifneq ($(IS_OFFICIAL), true)
-       DOT_BUILD_TYPE := UNOFFICIAL
+       DOTFE_BUILD_TYPE := UNOFFICIAL
        ifeq ($(WITH_GAPPS), true)
-	 DOT_BUILD_TYPE := UNOFFICIAL_GAPPS
+	 DOTFE_BUILD_TYPE := UNOFFICIAL_GAPPS
        endif
        $(error Device is not official "$(FOUND)")
     endif
 
 endif
 
-TARGET_PRODUCT_SHORT := $(subst dot_,,$(DOT_BUILD))
+TARGET_PRODUCT_SHORT := $(subst dotfe_,,$(DOTFE_BUILD))
 
-DOT_VERSION := dotOS-R-$(DOT_MOD_VERSION)-$(CURRENT_DEVICE)-$(DOT_BUILD_TYPE)-$(DOT_BUILD_DATE_UTC)
+DOTFE_VERSION := dotOS-FanEdition-R-$(DOTFE_MOD_VERSION)-$(CURRENT_DEVICE)-$(DOTFE_BUILD_TYPE)-$(DOTFE_BUILD_DATE_UTC)
 
-DOT_FINGERPRINT := dotOS/$(DOT_MOD_VERSION)/$(PLATFORM_VERSION)/$(TARGET_PRODUCT_SHORT)/$(DOT_BUILD_DATE_UTC)
-
-PRODUCT_GENERIC_PROPERTIES += \
-  ro.dot.version=$(DOT_VERSION) \
-  ro.dot.releasetype=$(DOT_BUILD_TYPE) \
-  ro.modversion=$(DOT_MOD_VERSION)
-
-DOT_DISPLAY_VERSION := DotOS-$(DOT_MOD_VERSION)-$(DOT_BUILD_TYPE)
+DOTFE_FINGERPRINT := dotOS-FanEdition/$(DOTFE_MOD_VERSION)/$(PLATFORM_VERSION)/$(TARGET_PRODUCT_SHORT)/$(DOTFE_BUILD_DATE_UTC)
 
 PRODUCT_GENERIC_PROPERTIES += \
-  ro.dot.display.version=$(DOT_DISPLAY_VERSION)\
-  ro.dot.fingerprint=$(DOT_FINGERPRINT)
+  ro.dotfe.version=$(DOTFE_VERSION) \
+  ro.dotfe.releasetype=$(DOTFE_BUILD_TYPE) \
+  ro.modversion=$(DOTFE_MOD_VERSION)
+
+DOTFE_DISPLAY_VERSION := DotOS-FanEditon-$(DOTFE_MOD_VERSION)-$(DOTFE_BUILD_TYPE)
+
+PRODUCT_GENERIC_PROPERTIES += \
+  ro.dotfe.display.version=$(DOTFE_DISPLAY_VERSION)\
+  ro.dotfe.fingerprint=$(DOTFE_FINGERPRINT)

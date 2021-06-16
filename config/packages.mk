@@ -1,4 +1,5 @@
 # Copyright (C) 2020 Project dotOS
+# Copyright (C) 2021 Project dotOS-FE (Fan Edition)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -84,15 +85,15 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI \
     Launcher3QuickStep
 
-# Dot Packages
+# DotOS Fan Edition Packages
 PRODUCT_PACKAGES += \
     Customizations \
     StitchImage \
     Music
 
-ifeq ($(DOT_OFFICIAL), true)
+ifeq ($(DOTFE_OFFICIAL), true)
 PRODUCT_PACKAGES += \
     SystemUpdates
 endif
 
-include vendor/dot/config/overlay.mk
+include vendor/dotfe/config/overlay.mk

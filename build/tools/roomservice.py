@@ -30,11 +30,11 @@ import urllib.request
 DEBUG = False
 default_manifest = ".repo/manifest.xml"
 
-custom_local_manifest = ".repo/local_manifests/dot_manifest.xml"
+custom_local_manifest = ".repo/local_manifests/dotfe_manifest.xml"
 custom_default_revision = "dot11"
-custom_dependencies = "dot.dependencies"
-org_manifest = "dotOS-Devices"  # leave empty if org is provided in manifest
-org_display = "DotOS-Devices"  # needed for displaying
+custom_dependencies = "dotfe.dependencies"
+org_manifest = "dotOS-FE-Devices"  # leave empty if org is provided in manifest
+org_display = "DotOS-FE-Devices"  # needed for displaying
 
 github_auth = None
 

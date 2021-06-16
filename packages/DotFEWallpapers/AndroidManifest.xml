@@ -16,7 +16,7 @@
  */
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.dot.extra.wallpapers"
+    package="com.dotfe.extra.wallpapers"
     android:versionCode="5"
     android:versionName="5.0">
 

@@ -1,5 +1,6 @@
 #
 #  Copyright 2020 The dotOS Project
+#  Copyright 2021 The dotOS-FE (Fan Edition) Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -32,13 +33,13 @@ PRODUCT_PACKAGES += \
 
 # Stub
 PRODUCT_PACKAGES += \
-    DotThemesStub
+    DotFEThemesStub
 
-# Dot Packages
+# DotOS Fan Edition Packages
 PRODUCT_PACKAGES += \
-    DotWallpapers
+    DotFEWallpapers
 
-# Dot Themes
+# DotOS Fan Edition Themes
 PRODUCT_PACKAGES += \
     NotificationOpaque \
     AccentColorPinkishOverlay \
