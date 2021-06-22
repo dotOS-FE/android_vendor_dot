@@ -17,7 +17,7 @@
 DOTFE_MOD_VERSION = v1.0
 
 ifndef DOTFE_BUILD_TYPE
-    DOTFE_BUILD_TYPE := UNOFFICIAL
+    DOTFE_BUILD_TYPE := Community
 endif
 
 CURRENT_DEVICE=$(shell echo "$(TARGET_PRODUCT)" | cut -d'_' -f 2,3)
@@ -35,9 +35,9 @@ ifeq ($(DOTFE_OFFICIAL), true)
       endif
     endif
     ifneq ($(IS_OFFICIAL), true)
-       DOTFE_BUILD_TYPE := UNOFFICIAL
+       DOTFE_BUILD_TYPE := Community
        ifeq ($(WITH_GAPPS), true)
-	 DOTFE_BUILD_TYPE := UNOFFICIAL_GAPPS
+	 DOTFE_BUILD_TYPE := Community_GAPPS
        endif
        $(error Device is not official "$(FOUND)")
     endif
