@@ -186,7 +186,7 @@ ifeq ($(WITH_GAPPS), true)
 endif
 
 # OnePlus Apps
-ifeq ($(WITH_OPAPPS), true)
+ifeq ($(WITH_GAPPS), false)
     $(call inherit-product, vendor/opstuff/config.mk)
 endif
 
