@@ -186,9 +186,7 @@ ifeq ($(WITH_GAPPS), true)
 endif
 
 # OnePlus Apps
-ifeq ($(WITH_OPAPPS), true)
-    $(call inherit-product, vendor/opstuff/config.mk)
-endif
+$(call inherit-product, vendor/opstuff/config.mk)
 
 # Face Unlock
 TARGET_FACE_UNLOCK_SUPPORTED ?= true
