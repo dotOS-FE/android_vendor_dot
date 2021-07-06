@@ -109,6 +109,10 @@ include vendor/dotfe/config/packages.mk
 #versioning
 include vendor/dotfe/config/version.mk
 
+# dotOS Fan Edition Common
+PRODUCT_COPY_FILES += \
+    vendor/dotfe/config/permissions/pixel_experience_2020.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/pixel_experience_2020.xml
+
 # Bootanimation
 include vendor/dotfe/config/bootanimation.mk
 

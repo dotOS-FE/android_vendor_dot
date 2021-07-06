@@ -90,7 +90,8 @@ PRODUCT_PACKAGES += \
     Customizations \
     StitchImage \
     Music \
-    Leaflet
+    Leaflet \
+    Flipendo
 
 ifeq ($(DOTFE_OFFICIAL), true)
 PRODUCT_PACKAGES += \
