@@ -16,10 +16,14 @@
 # Required packages
 PRODUCT_PACKAGES += \
     BluetoothExt \
-    Browser \
+    ChromePublic \
     ExactCalculator \
     ThemePicker \
     QuickAccessWallet
+
+# Bromite webview
+PRODUCT_PACKAGES += \
+    bromite-webview
 
 # Config
 PRODUCT_PACKAGES += \
