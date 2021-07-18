@@ -16,9 +16,9 @@
 # Required packages
 PRODUCT_PACKAGES += \
     BluetoothExt \
-    Calendar \
     ChromePublic \
     ExactCalculator \
+    Simple-Calendar \
     ThemePicker \
     QuickAccessWallet
 
