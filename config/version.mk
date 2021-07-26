@@ -14,7 +14,7 @@
 # limitations under the License.
 
 #dotOS Fan Edition Versioning :
-DOTFE_MOD_VERSION = v1.1
+DOTFE_MOD_VERSION = v1.2
 
 ifndef DOTFE_BUILD_TYPE
     DOTFE_BUILD_TYPE := Community
