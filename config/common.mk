@@ -36,6 +36,9 @@ else
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=1
 endif
 
+# Build fingerprint (We need it, to bypass SafetyNet)
+BUILD_FINGERPRINT := google/redfin/redfin:11/RQ3A.210705.001/7380771:user/release-keys
+
 # Backup Tool
 PRODUCT_COPY_FILES += \
     vendor/dotfe/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
