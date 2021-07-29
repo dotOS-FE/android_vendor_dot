@@ -191,6 +191,9 @@ endif
 # OnePlus Apps
 $(call inherit-product, vendor/opstuff/config.mk)
 
+# POSP Volume Plugins
+include packages/apps/PotatoPlugins/plugins.mk
+
 # Face Unlock
 TARGET_FACE_UNLOCK_SUPPORTED ?= true
 ifeq ($(TARGET_FACE_UNLOCK_SUPPORTED),true)
