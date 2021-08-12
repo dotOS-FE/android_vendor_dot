@@ -96,7 +96,8 @@ PRODUCT_PACKAGES += \
     StitchImage \
     Music \
     Leaflet \
-    QPGallery
+    QPGallery \
+    SoftAPManager
 
 ifeq ($(DOTFE_OFFICIAL), true)
 PRODUCT_PACKAGES += \
